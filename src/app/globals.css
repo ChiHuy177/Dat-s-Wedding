@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --wed-bg: #f3efe2;
+  --wed-bg-2: #e8e1c9;
+  --wed-surface: #fffdf6;
+  --wed-ink: #22301f;
+  --wed-ink-soft: #57624e;
+  --wed-accent: #a9863f;
+  --wed-accent-soft: #cdb888;
+  --wed-deep: #1c2e1f;
+  --wed-deep-2: #294a2c;
+  --wed-line: rgba(34, 48, 31, 0.16);
+}
+
+@theme inline {
+  --color-paper: var(--wed-bg);
+  --color-paper-2: var(--wed-bg-2);
+  --color-surface: var(--wed-surface);
+  --color-ink: var(--wed-ink);
+  --color-ink-soft: var(--wed-ink-soft);
+  --color-accent: var(--wed-accent);
+  --color-accent-soft: var(--wed-accent-soft);
+  --color-deep: var(--wed-deep);
+  --color-deep-2: var(--wed-deep-2);
+  --color-line: var(--wed-line);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-script: var(--font-script);
+}
+
+body {
+  font-family: var(--font-body), -apple-system, "Segoe UI", sans-serif;
+}
+
+.wed-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url("/img/bg.png");
+  background-size: auto 100%;
+  background-position: top center;
+  background-repeat: repeat-x;
+  opacity: 0.9;
+}
+
+.wed-bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(251, 250, 246, 0.35);
+}
