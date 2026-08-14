@@ -24,7 +24,7 @@ export function Invitation() {
           href={weddingConfig.ceremony.mapUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-body inline-block rounded-full bg-ink px-6.5 py-2.5 text-[12.5px] font-bold tracking-[0.06em] text-surface uppercase transition-opacity hover:opacity-85 lg:px-8 lg:py-3.5 lg:text-sm"
+          className="font-body inline-block rounded-full bg-highlight px-6.5 py-2.5 text-[12.5px] font-bold tracking-[0.06em] text-surface uppercase transition-opacity hover:opacity-85 lg:px-8 lg:py-3.5 lg:text-sm"
         >
           Xem chỉ đường
         </a>

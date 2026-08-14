@@ -100,7 +100,7 @@ export function RsvpForm() {
                 disabled={status === "loading"}
                 whileHover={status === "loading" ? undefined : { scale: 1.02 }}
                 whileTap={status === "loading" ? undefined : { scale: 0.97 }}
-                className="mt-1.5 w-full rounded-full bg-accent py-3.5 text-[13px] font-bold tracking-[0.08em] text-[#2a1e0d] uppercase disabled:opacity-60 lg:py-4 lg:text-sm"
+                className="mt-1.5 w-full rounded-full bg-highlight py-3.5 text-[13px] font-bold tracking-[0.08em] text-surface uppercase disabled:opacity-60 lg:py-4 lg:text-sm"
               >
                 {status === "loading" ? "Đang gửi..." : "Xác nhận"}
               </motion.button>

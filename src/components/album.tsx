@@ -38,7 +38,7 @@ export function Album() {
       <Reveal className="mb-5 flex items-center justify-center gap-3 lg:mb-10">
         <span
           className="font-display flex h-9 w-9 -rotate-6 items-center justify-center rounded-sm text-base text-accent-soft shadow-md lg:h-12 lg:w-12 lg:text-lg"
-          style={{ background: "linear-gradient(155deg, #9a4a35, #5c281d 75%)" }}
+          style={{ background: "linear-gradient(155deg, #C0552C, #8a3d1f 75%)" }}
         >
           囍
         </span>

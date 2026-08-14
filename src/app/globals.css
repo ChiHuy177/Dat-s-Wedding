@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --wed-bg: #f3efe2;
-  --wed-bg-2: #e8e1c9;
-  --wed-surface: #fffdf6;
-  --wed-ink: #22301f;
-  --wed-ink-soft: #57624e;
-  --wed-accent: #a9863f;
-  --wed-accent-soft: #cdb888;
-  --wed-deep: #1c2e1f;
-  --wed-deep-2: #294a2c;
-  --wed-line: rgba(34, 48, 31, 0.16);
+  --wed-bg: #f6f3ea;
+  --wed-bg-2: #ede9dd;
+  --wed-surface: #fffdf8;
+  --wed-ink: #2b2a26;
+  --wed-ink-soft: #6e6a5e;
+  --wed-accent: #55642f;
+  --wed-accent-soft: #e4c98f;
+  --wed-deep: #3e4a22;
+  --wed-deep-2: #2b2a26;
+  --wed-line: rgba(43, 42, 38, 0.14);
+  --wed-highlight: #c0552c;
 }
 
 @theme inline {
@@ -24,6 +25,7 @@
   --color-deep: var(--wed-deep);
   --color-deep-2: var(--wed-deep-2);
   --color-line: var(--wed-line);
+  --color-highlight: var(--wed-highlight);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-script: var(--font-script);

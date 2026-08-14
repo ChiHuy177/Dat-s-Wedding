@@ -19,7 +19,7 @@ export function Envelope({ targetId }: { targetId: string }) {
   }
 
   return (
-    <section className="relative flex h-dvh min-h-140 flex-col items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,#9a4a35_0%,#6b2f22_60%,#3d1912_100%)] px-8 text-center text-[#f8ece2] lg:h-screen">
+    <section className="relative flex h-dvh min-h-140 flex-col items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,#3E4A22_0%,#2B2A26_60%,#1c1b17_100%)] px-8 text-center text-[#f8ece2] lg:h-screen">
       <span className="absolute top-6 right-6 flex h-14 w-11 items-center justify-center border border-dashed border-white/40 text-[9px] tracking-wide text-white/55 lg:top-10 lg:right-10">
         Bưu
         <br />
@@ -64,7 +64,7 @@ export function Envelope({ targetId }: { targetId: string }) {
         {/* body */}
         <div
           className="pointer-events-none absolute inset-0 rounded-md border border-white/15 shadow-2xl"
-          style={{ background: "linear-gradient(155deg, #9a4a35, #5c281d 75%)" }}
+          style={{ background: "linear-gradient(155deg, #C0552C, #8a3d1f 75%)" }}
         />
 
         {/* card sliding out */}
@@ -87,7 +87,7 @@ export function Envelope({ targetId }: { targetId: string }) {
           className="pointer-events-none absolute inset-x-0 top-0 z-20 h-26 origin-top lg:h-32"
           style={{
             clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-            background: "linear-gradient(160deg, #6b2f22 20%, #9a4a35)",
+            background: "linear-gradient(160deg, #8a3d1f 20%, #C0552C)",
             transformStyle: "preserve-3d",
             backfaceVisibility: "hidden",
           }}
@@ -126,7 +126,7 @@ export function Envelope({ targetId }: { targetId: string }) {
             marginTop: "-1.75rem",
             marginLeft: "-1.75rem",
             background:
-              "radial-gradient(circle at 35% 30%, var(--wed-accent-soft), var(--wed-accent) 60%, #7a5a25 100%)",
+              "radial-gradient(circle at 35% 30%, var(--wed-accent-soft), var(--wed-accent) 60%, #8A7238 100%)",
           }}
           initial={{ scale: 0, opacity: 0 }}
           animate={open ? { scale: 0.4, rotate: 25, opacity: 0 } : { scale: 1, rotate: 0, opacity: 1 }}
