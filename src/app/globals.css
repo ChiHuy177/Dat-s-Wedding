@@ -8,8 +8,10 @@
   --wed-ink-soft: #6e6a5e;
   --wed-accent: #55642f;
   --wed-accent-soft: #e4c98f;
-  --wed-deep: #3e4a22;
-  --wed-deep-2: #2b2a26;
+  /* Deep forest green — the ground for the ceremony panel. */
+  --wed-deep: #35472c;
+  --wed-deep-2: #2a3823;
+  --wed-cream: #f3efe3;
   --wed-line: rgba(43, 42, 38, 0.14);
   --wed-highlight: #c0552c;
 }
@@ -24,6 +26,7 @@
   --color-accent-soft: var(--wed-accent-soft);
   --color-deep: var(--wed-deep);
   --color-deep-2: var(--wed-deep-2);
+  --color-cream: var(--wed-cream);
   --color-line: var(--wed-line);
   --color-highlight: var(--wed-highlight);
   --font-display: var(--font-display);
@@ -35,22 +38,3 @@ body {
   font-family: var(--font-body), -apple-system, "Segoe UI", sans-serif;
 }
 
-.wed-bg-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background-image: url("/img/bg.png");
-  background-size: auto 100%;
-  background-position: top center;
-  background-repeat: repeat-x;
-  opacity: 0.9;
-}
-
-.wed-bg-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: rgba(251, 250, 246, 0.35);
-}

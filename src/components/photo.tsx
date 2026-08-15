@@ -7,6 +7,8 @@ type PhotoProps = {
   className?: string;
   priority?: boolean;
   objectPosition?: string;
+  /** Override when the frame is much narrower than the viewport. */
+  sizes?: string;
 };
 
 export function Photo({
@@ -16,6 +18,7 @@ export function Photo({
   className = "",
   priority = false,
   objectPosition = "center",
+  sizes = "(min-width: 1024px) 50vw, 100vw",
 }: PhotoProps) {
   if (src) {
     return (
@@ -25,7 +28,7 @@ export function Photo({
           alt={alt}
           fill
           priority={priority}
-          sizes="(min-width: 1024px) 50vw, 100vw"
+          sizes={sizes}
           className="object-cover"
           style={{ objectPosition }}
         />

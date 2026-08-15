@@ -15,6 +15,7 @@ function getTimeLeft() {
   };
 }
 
+/** Sub-block of the love story section. */
 export function Countdown() {
   const [timeLeft, setTimeLeft] = useState<ReturnType<typeof getTimeLeft> | null>(null);
 
@@ -28,11 +29,11 @@ export function Countdown() {
     };
   }, []);
 
-  const units: Array<{ key: keyof ReturnType<typeof getTimeLeft>; label: string }> = [
-    { key: "days", label: "Ngày" },
-    { key: "hours", label: "Giờ" },
-    { key: "minutes", label: "Phút" },
-    { key: "seconds", label: "Giây" },
+  const units: Array<{ key: keyof ReturnType<typeof getTimeLeft>; label: string; labelEn: string }> = [
+    { key: "days", label: "Ngày", labelEn: "Days" },
+    { key: "hours", label: "Giờ", labelEn: "Hours" },
+    { key: "minutes", label: "Phút", labelEn: "Minutes" },
+    { key: "seconds", label: "Giây", labelEn: "Seconds" },
   ];
 
   return (
@@ -41,9 +42,9 @@ export function Countdown() {
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       transition={{ staggerChildren: 0.08 }}
-      className="flex justify-center gap-5 px-5 pt-2 pb-8 lg:gap-12 lg:py-14"
+      className="flex justify-center gap-6 lg:gap-12"
     >
-      {units.map(({ key, label }) => (
+      {units.map(({ key, label, labelEn }) => (
         <motion.div
           key={key}
           variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
@@ -53,8 +54,11 @@ export function Countdown() {
           <span className="font-display block text-[32px] leading-none tabular-nums lg:text-6xl">
             {timeLeft ? String(timeLeft[key]).padStart(2, "0") : "--"}
           </span>
-          <span className="font-body mt-1.5 block text-[10px] tracking-[0.12em] text-ink-soft uppercase lg:mt-3 lg:text-xs">
+          <span className="font-body mt-1.5 block text-[10px] tracking-[0.12em] text-ink uppercase lg:mt-3 lg:text-xs">
             {label}
+          </span>
+          <span className="font-body mt-0.5 block text-[8.5px] tracking-[0.12em] text-ink-soft uppercase lg:text-[10px]">
+            {labelEn}
           </span>
         </motion.div>
       ))}
