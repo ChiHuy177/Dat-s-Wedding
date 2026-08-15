@@ -31,11 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className={`${display.variable} ${body.variable} ${script.variable}`}>
-      <body className="font-body text-ink antialiased">
-        <div className="wed-bg-layer" />
-        <div className="wed-bg-overlay" />
-        {children}
-      </body>
+      <body className="font-body bg-paper text-ink antialiased">{children}</body>
     </html>
   );
 }
