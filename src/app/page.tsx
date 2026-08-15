@@ -1,36 +1,28 @@
 import { MotionProvider } from "@/components/motion-provider";
-import { Envelope } from "@/components/envelope";
+import { InvitationGate } from "@/components/invitation-gate";
 import { Hero } from "@/components/hero";
 import { LoveStory } from "@/components/love-story";
-import { Countdown } from "@/components/countdown";
-import { Invitation } from "@/components/invitation";
-import { Location } from "@/components/location";
-import { Families } from "@/components/families";
-import { Timeline } from "@/components/timeline";
+import { CeremonyPanel } from "@/components/ceremony-panel";
 import { Dresscode } from "@/components/dresscode";
+import { Guestbook } from "@/components/guestbook";
 import { Gift } from "@/components/gift";
-import { Album } from "@/components/album";
-import { RsvpForm } from "@/components/rsvp-form";
 import { Thanks } from "@/components/thanks";
 
 export default function Home() {
   return (
     <MotionProvider>
-      <main>
-        <Envelope targetId="hero" />
-        <Hero />
-        <LoveStory />
-        <Countdown />
-        <Invitation />
-        <Location />
-        <Families />
-        <Timeline />
-        <Dresscode />
-        <Gift />
-        <Album />
-        <RsvpForm />
-        <Thanks />
-      </main>
+      <InvitationGate>
+        {/* Sections alternate light / deep green all the way down. */}
+        <main>
+          <Hero />
+          <LoveStory />
+          <CeremonyPanel />
+          <Dresscode />
+          <Guestbook />
+          <Gift />
+          <Thanks />
+        </main>
+      </InvitationGate>
     </MotionProvider>
   );
 }

@@ -2,20 +2,21 @@
 
 import { motion } from "motion/react";
 import { Reveal } from "@/components/reveal";
+import { Section } from "@/components/section";
+import { SectionHeading } from "@/components/section-heading";
 import { weddingConfig } from "@/lib/wedding-config";
 
 export function Dresscode() {
   return (
-    <section className="bg-paper/80 px-7 pt-2 pb-8.5 text-center backdrop-blur-sm lg:pb-16">
+    <Section tone="light">
       <Reveal>
-        <p className="font-body mb-3.5 text-[10.5px] tracking-[0.14em] text-ink-soft uppercase lg:mb-5 lg:text-xs">
-          Dresscode gợi ý
-        </p>
-        <div className="flex justify-center gap-3 lg:gap-5">
+        <SectionHeading vi="Dresscode gợi ý" en="Suggested dress code" />
+
+        <div className="mt-7 flex justify-center gap-3 lg:mt-10 lg:gap-5">
           {weddingConfig.dresscodeColors.map((color) => (
             <motion.span
               key={color}
-              className="h-6.5 w-6.5 rounded-full border border-line lg:h-10 lg:w-10"
+              className="h-7 w-7 rounded-full border border-line lg:h-10 lg:w-10"
               style={{ background: color }}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.95 }}
@@ -23,6 +24,6 @@ export function Dresscode() {
           ))}
         </div>
       </Reveal>
-    </section>
+    </Section>
   );
 }
