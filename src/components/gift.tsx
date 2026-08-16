@@ -6,7 +6,6 @@ import { LeafDecor } from "@/components/leaf-decor";
 import { Photo } from "@/components/photo";
 import { Reveal, RevealStagger, RevealItem } from "@/components/reveal";
 import { Section } from "@/components/section";
-import { SectionHeading } from "@/components/section-heading";
 import { weddingConfig } from "@/lib/wedding-config";
 
 function CopyNumberButton({ number }: { number: string }) {
@@ -42,7 +41,7 @@ export function Gift() {
       <LeafDecor corner="bottom-right" className="text-accent" opacity={0.18} />
 
       <Reveal>
-        <SectionHeading vi="Hộp quà mừng" en="Gift box" />
+        <p className="font-display text-center text-[26px] text-heading lg:text-[34px]">Hộp Quà Mừng</p>
         <p className="font-body mx-auto mt-6 max-w-md text-center text-[12.5px] leading-relaxed text-ink lg:mt-8 lg:text-[14px]">
           {note}
         </p>

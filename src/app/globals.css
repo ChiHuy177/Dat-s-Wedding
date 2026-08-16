@@ -14,6 +14,8 @@
   --wed-cream: #f3efe3;
   --wed-line: rgba(43, 42, 38, 0.14);
   --wed-highlight: #c0552c;
+  /* Dark olive used for display headings in the Figma invitation card (Hero, section titles). */
+  --wed-heading: #3e462f;
 }
 
 @theme inline {
@@ -29,6 +31,7 @@
   --color-cream: var(--wed-cream);
   --color-line: var(--wed-line);
   --color-highlight: var(--wed-highlight);
+  --color-heading: var(--wed-heading);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-script: var(--font-script);

@@ -72,13 +72,13 @@ export function Guestbook() {
   }
 
   return (
-    <Section id="guestbook" tone="dark">
+    <Section id="guestbook" tone="light">
       <Reveal>
-        <SectionHeading vi="Sổ lưu bút" en="Guestbook" onDark />
+        <SectionHeading en="Guestbook" vi="Sổ lưu bút" />
       </Reveal>
 
       <Reveal className="mt-8 lg:mt-11">
-        <form onSubmit={handleSubmit} className="rounded-lg border border-cream/25 bg-cream/5 p-4 lg:p-5">
+        <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-surface p-4 lg:p-5">
             <input
               required
               type="text"
@@ -96,12 +96,12 @@ export function Guestbook() {
             />
 
             {status === "error" && (
-              <p className="font-body mt-2.5 text-[11.5px] text-rose-300">
+              <p className="font-body mt-2.5 text-[11.5px] text-highlight">
                 Gửi không thành công, vui lòng thử lại sau ít phút.
               </p>
             )}
             {status === "done" && (
-              <p className="font-body mt-2.5 text-[11.5px] text-accent-soft">
+              <p className="font-body mt-2.5 text-[11.5px] text-accent">
                 Cảm ơn bạn đã gửi lời chúc!
               </p>
             )}
@@ -127,20 +127,20 @@ export function Guestbook() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="rounded-lg border border-cream/20 bg-cream/5 px-4 py-3.5"
+              className="rounded-lg border border-line bg-surface px-4 py-3.5"
             >
               <div className="flex items-baseline justify-between gap-3">
-                <p className="font-body text-[12.5px] font-semibold text-cream">{wish.name}</p>
+                <p className="font-body text-[12.5px] font-semibold text-ink">{wish.name}</p>
                 {wish.at && (
                   <time
                     dateTime={wish.at}
-                    className="font-body flex-none text-[9.5px] tracking-[0.06em] text-cream/50 uppercase"
+                    className="font-body flex-none text-[9.5px] tracking-[0.06em] text-ink-soft uppercase"
                   >
                     {formatDate(wish.at)}
                   </time>
                 )}
               </div>
-              <p className="font-body mt-1.5 text-[12.5px] leading-relaxed whitespace-pre-line text-cream/75">
+              <p className="font-body mt-1.5 text-[12.5px] leading-relaxed whitespace-pre-line text-ink-soft">
                 {wish.message}
               </p>
             </motion.div>
@@ -148,7 +148,7 @@ export function Guestbook() {
         </AnimatePresence>
 
         {loaded && wishes.length === 0 && (
-          <p className="font-body py-4 text-center text-[12px] text-cream/60">
+          <p className="font-body py-4 text-center text-[12px] text-ink-soft">
             Chưa có lời chúc nào — hãy là người đầu tiên nhé!
           </p>
         )}

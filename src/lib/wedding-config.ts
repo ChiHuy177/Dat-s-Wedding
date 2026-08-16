@@ -61,14 +61,14 @@ export const weddingConfig = {
     { time: "12:00", label: "Khai tiệc", labelEn: "Reception" },
   ] as const,
 
-  dresscodeColors: ["#55642F", "#C0552C", "#E4C98F", "#2B2A26", "#FFFDF8"],
+  dresscodeColors: ["#55642F", "#7A4A2B", "#E4C98F", "#F3EFE3"],
 
   photos: {
     hero: "/img/hero.jpg",
     loveStory: "/img/love-story.jpg",
-    // Solo portraits for the "The Story of Love" pair.
-    groomPortrait: "/img/album-07.jpg",
-    bridePortrait: "/img/album-08.jpg",
+    // Solo portraits for the "The Story of Love" pair (pre-tilted polaroid exports).
+    groomPortrait: "/the-story-of-love/groom.png",
+    bridePortrait: "/the-story-of-love/bride.png",
     album: [
       "/img/album-01.jpg",
       "/img/album-02.jpg",

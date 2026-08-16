@@ -2,24 +2,28 @@ import { MotionProvider } from "@/components/motion-provider";
 import { InvitationGate } from "@/components/invitation-gate";
 import { Hero } from "@/components/hero";
 import { LoveStory } from "@/components/love-story";
+import { Album } from "@/components/album";
 import { CeremonyPanel } from "@/components/ceremony-panel";
-import { Dresscode } from "@/components/dresscode";
+import { Schedule } from "@/components/schedule";
 import { Guestbook } from "@/components/guestbook";
 import { Gift } from "@/components/gift";
+import { Dresscode } from "@/components/dresscode";
 import { Thanks } from "@/components/thanks";
 
 export default function Home() {
   return (
     <MotionProvider>
       <InvitationGate>
-        {/* Sections alternate light / deep green all the way down. */}
+        {/* Light cream cards all the way down; only Thanks closes on deep green. */}
         <main>
           <Hero />
           <LoveStory />
+          <Album />
           <CeremonyPanel />
-          <Dresscode />
+          <Schedule />
           <Guestbook />
           <Gift />
+          <Dresscode />
           <Thanks />
         </main>
       </InvitationGate>

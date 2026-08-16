@@ -51,15 +51,11 @@ export function Countdown() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <span className="font-display block text-[32px] leading-none tabular-nums lg:text-6xl">
+          <span className="font-display block text-[36px] leading-none text-heading tabular-nums lg:text-6xl">
             {timeLeft ? String(timeLeft[key]).padStart(2, "0") : "--"}
           </span>
-          <span className="font-body mt-1.5 block text-[10px] tracking-[0.12em] text-ink uppercase lg:mt-3 lg:text-xs">
-            {label}
-          </span>
-          <span className="font-body mt-0.5 block text-[8.5px] tracking-[0.12em] text-ink-soft uppercase lg:text-[10px]">
-            {labelEn}
-          </span>
+          <span className="font-display mt-2 block text-[14px] text-heading lg:mt-3 lg:text-lg">{label}</span>
+          <span className="font-display block text-[14px] text-heading lg:text-lg">{labelEn}</span>
         </motion.div>
       ))}
     </motion.div>

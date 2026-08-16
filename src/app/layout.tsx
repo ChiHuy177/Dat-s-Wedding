@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Be_Vietnam_Pro, Alex_Brush } from "next/font/google";
+import localFont from "next/font/local";
+import { Be_Vietnam_Pro, Alex_Brush } from "next/font/google";
 import { weddingConfig } from "@/lib/wedding-config";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+// Vietnamese-localized copy of the Figma design's display face — see src/fonts/MTD-Feliz-en-Vista.otf.
+const display = localFont({
+  src: "../fonts/MTD-Feliz-en-Vista.otf",
   variable: "--font-display",
-  subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const body = Be_Vietnam_Pro({
@@ -16,10 +17,10 @@ const body = Be_Vietnam_Pro({
   weight: ["400", "500", "600", "700"],
 });
 
-// Script accent face — English-only decorative words (no Vietnamese glyphs), pairs with the diacritic-safe faces above.
+// Cursive signature face — used for the "Trưởng Nam / Út Nữ" style captions; renders Vietnamese diacritics correctly.
 const script = Alex_Brush({
   variable: "--font-script",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   weight: "400",
 });
 

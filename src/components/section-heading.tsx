@@ -1,32 +1,23 @@
 type SectionHeadingProps = {
-  vi: string;
+  /** English display line — the bigger, italic headline in the invitation. */
   en: string;
-  /** Rendered inside the dark ceremony panel, where text sits on deep green. */
+  /** Vietnamese line underneath, set smaller and upright. */
+  vi: string;
+  /** Rendered on the dark closing panel (Thank You), where text sits on deep green. */
   onDark?: boolean;
   className?: string;
 };
 
 /**
- * The reference invitation labels every block twice — Vietnamese on top,
- * a smaller English line beneath. Both lines are letterspaced small caps.
+ * Every section title in the invitation is a two-line pair: the English name
+ * large and italic, the Vietnamese translation smaller and upright beneath —
+ * both in the display serif, both the same dark-olive ink.
  */
-export function SectionHeading({ vi, en, onDark = false, className = "" }: SectionHeadingProps) {
+export function SectionHeading({ en, vi, onDark = false, className = "" }: SectionHeadingProps) {
   return (
-    <div className={`text-center ${className}`}>
-      <p
-        className={`font-body text-[11px] font-semibold tracking-[0.18em] uppercase lg:text-[13px] ${
-          onDark ? "text-cream" : "text-ink"
-        }`}
-      >
-        {vi}
-      </p>
-      <p
-        className={`font-body mt-1 text-[9px] tracking-[0.16em] uppercase lg:text-[10.5px] ${
-          onDark ? "text-cream/55" : "text-ink-soft"
-        }`}
-      >
-        {en}
-      </p>
+    <div className={`text-center ${onDark ? "text-cream" : "text-heading"} ${className}`}>
+      <p className="font-display text-[30px] italic lg:text-[44px]">{en}</p>
+      <p className="font-display mt-1 text-[17px] lg:text-[20px]">{vi}</p>
     </div>
   );
 }

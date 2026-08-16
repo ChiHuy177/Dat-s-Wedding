@@ -1,58 +1,43 @@
-import { Album } from "@/components/album";
-import { Countdown } from "@/components/countdown";
-import { Photo } from "@/components/photo";
 import { Reveal, RevealStagger, RevealItem } from "@/components/reveal";
 import { Section } from "@/components/section";
-import { SectionHeading, Divider } from "@/components/section-heading";
+import { SectionHeading } from "@/components/section-heading";
 import { weddingConfig } from "@/lib/wedding-config";
 
 type PortraitRowProps = {
-  src?: string;
+  src: string;
   alt: string;
-  order: string;
-  orderEn: string;
+  label: string;
   name: string;
-  /** Bride's row mirrors the groom's: name on the left, portrait on the right. */
+  order: string;
+  /** Bride's row mirrors the groom's: caption on the left, polaroid on the right. */
   flip?: boolean;
 };
 
-/** Portrait and name sit in two equal columns, squared up so the pair reads as parallel. */
-function PortraitRow({ src, alt, order, orderEn, name, flip = false }: PortraitRowProps) {
-  const portrait = (
-    <div className="justify-self-center rounded-sm border border-line bg-surface p-2 pb-5 shadow-md lg:p-2.5 lg:pb-7">
-      <Photo
-        src={src}
-        alt={alt}
-        label="Ảnh"
-        className="h-42 w-30 lg:h-62 lg:w-44"
-        sizes="(min-width: 1024px) 176px, 120px"
-      />
-    </div>
-  );
+/** Portrait already comes pre-tilted with its own white border/shadow baked in — just place it. */
+function PortraitRow({ src, alt, label, name, order, flip = false }: PortraitRowProps) {
+  // eslint-disable-next-line @next/next/no-img-element -- flattened polaroid export (border + shadow + tilt baked in)
+  const portrait = <img src={src} alt={alt} className="w-40 shrink-0 lg:w-52" />;
 
   const caption = (
     <div className={flip ? "text-right" : "text-left"}>
-      <p className="font-body text-[9px] tracking-[0.16em] text-ink-soft uppercase lg:text-[10.5px]">
-        {order} / {orderEn}
+      <p className="font-display text-[24px] text-heading italic lg:text-[30px]">{label}</p>
+      <p className="font-display mt-1 text-[15px] text-heading lg:text-[18px]">{name}</p>
+      <p
+        className={`font-script mt-3 text-[30px] leading-[0.85] text-heading lg:text-[38px] ${flip ? "-rotate-3" : "rotate-3"}`}
+      >
+        {order.split(" ").map((word) => (
+          <span key={word} className="block">
+            {word}
+          </span>
+        ))}
       </p>
-      <p className="font-display mt-2 text-[24px] leading-tight text-ink lg:text-4xl">{name}</p>
-      <span className={`mt-3 block h-px w-10 bg-accent lg:w-14 ${flip ? "ml-auto" : ""}`} />
     </div>
   );
 
   return (
-    <RevealItem className="grid grid-cols-2 items-center gap-5 lg:gap-9">
-      {flip ? (
-        <>
-          {caption}
-          {portrait}
-        </>
-      ) : (
-        <>
-          {portrait}
-          {caption}
-        </>
-      )}
+    <RevealItem className={`relative z-10 flex items-center gap-5 lg:gap-8 ${flip ? "flex-row-reverse" : ""}`}>
+      {portrait}
+      {caption}
     </RevealItem>
   );
 }
@@ -63,38 +48,49 @@ export function LoveStory() {
   return (
     <Section tone="light">
       <Reveal>
-        <SectionHeading vi="Chuyện tình của chúng mình" en="The story of love" />
+        <SectionHeading en="The Story of Love" vi="Chuyện tình của chúng mình" />
       </Reveal>
 
-      <RevealStagger className="mt-9 flex flex-col gap-8 lg:mt-14 lg:gap-12">
-        <PortraitRow
-          src={photos.groomPortrait}
-          alt={groomFamily.child.name}
-          order={groomFamily.child.order}
-          orderEn={groomFamily.child.orderEn}
-          name={weddingConfig.groom}
+      <div className="relative mt-10 lg:mt-14">
+        {/* eslint-disable-next-line @next/next/no-img-element -- decorative floral, sits behind the portraits */}
+        <img
+          src="/the-story-of-love/decor-groom.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -top-10 -left-10 z-0 w-40 lg:-top-14 lg:-left-14 lg:w-56"
         />
-        <PortraitRow
-          src={photos.bridePortrait}
-          alt={brideFamily.child.name}
-          order={brideFamily.child.order}
-          orderEn={brideFamily.child.orderEn}
-          name={weddingConfig.bride}
-          flip
+        {/* eslint-disable-next-line @next/next/no-img-element -- decorative floral, sits behind the portraits */}
+        <img
+          src="/the-story-of-love/decor-bride.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute -right-8 -bottom-10 z-0 w-28 lg:-right-10 lg:-bottom-14 lg:w-40"
         />
-      </RevealStagger>
+
+        <RevealStagger className="flex flex-col gap-10 lg:gap-14">
+          <PortraitRow
+            src={photos.groomPortrait}
+            alt={groomFamily.child.name}
+            label="Groom"
+            name={groomFamily.child.name}
+            order={groomFamily.child.order}
+          />
+          <PortraitRow
+            src={photos.bridePortrait}
+            alt={brideFamily.child.name}
+            label="Bride"
+            name={brideFamily.child.name}
+            order={brideFamily.child.order}
+            flip
+          />
+        </RevealStagger>
+      </div>
 
       <Reveal className="mt-10 text-center lg:mt-14">
         <p className="mx-auto max-w-md text-[13px] leading-relaxed text-ink lg:text-[15px]">
           {weddingConfig.loveStory}
         </p>
       </Reveal>
-
-      <Divider />
-      <Countdown />
-
-      <Divider />
-      <Album />
     </Section>
   );
 }

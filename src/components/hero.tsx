@@ -1,48 +1,39 @@
-import Image from "next/image";
 import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
 import { weddingConfig } from "@/lib/wedding-config";
 
 export function Hero() {
-  const src = weddingConfig.photos.hero;
+  const { groom, bride, dateParts } = weddingConfig;
+  const dateSpaced = weddingConfig.weddingDateShort.split(".").join(" . ");
 
   return (
-    <section
-      id="hero"
-      className="relative flex h-dvh min-h-140 w-full items-center justify-center overflow-hidden bg-deep lg:h-screen"
-    >
-      <div className="relative h-full w-full lg:aspect-1772/2480 lg:h-full lg:w-auto">
-        {src ? (
-          <Image
-            src={src}
-            alt={`${weddingConfig.groom} và ${weddingConfig.bride}`}
-            fill
-            priority
-            sizes="(min-width: 1024px) 90vh, 100vw"
-            className="object-cover"
-            style={{ objectPosition: "50% 18%" }}
-          />
-        ) : (
-          <div className="absolute inset-0 bg-linear-to-br from-deep-2 to-deep" />
-        )}
+    <section id="hero" className="relative overflow-hidden bg-paper px-6 pt-16 pb-14 text-center lg:pt-24 lg:pb-20">
+      <Reveal>
+        <SectionHeading en="The Wedding" vi="Đám Cưới" />
+      </Reveal>
 
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-black/5" />
+      <Reveal delay={0.1} className="relative mx-auto mt-6 w-72 lg:mt-9 lg:w-108">
+        {/* eslint-disable-next-line @next/next/no-img-element -- flattened Figma export (frame + photo + florals), not an optimizable photo */}
+        <img src="/decor/hero/mockup.png" alt={`${groom} & ${bride}`} className="w-full" />
+      </Reveal>
 
-        <div className="absolute inset-x-0 bottom-0 px-7 pb-12 text-white lg:px-10 lg:pb-14">
-          <Reveal>
-            <p className="font-body mb-3 text-[10.5px] font-bold tracking-[0.2em] text-white/80 uppercase lg:text-xs">
-              Trân trọng kính mời
-            </p>
-            <p className="font-script text-[clamp(44px,14vw,68px)] leading-[1.15] lg:text-8xl">
-              {weddingConfig.groom}
-              <em className="my-0.5 block text-[0.5em] text-accent-soft not-italic lg:my-2">and</em>
-              {weddingConfig.bride}
-            </p>
-            <p className="font-body mt-4 text-[11.5px] tracking-[0.22em] text-white/80 uppercase lg:mt-6 lg:text-xs">
-              {weddingConfig.weddingDateLabel}
-            </p>
-          </Reveal>
+      <Reveal delay={0.2} className="mt-8 grid grid-cols-[1fr_auto_1fr] items-center gap-2 lg:mt-12 lg:gap-4">
+        <div className="font-display justify-self-end text-center text-[22px] leading-tight text-heading lg:text-[34px]">
+          {groom.split(" ").map((word) => (
+            <p key={word}>{word}</p>
+          ))}
         </div>
-      </div>
+        <div className="text-heading">
+          <p className="font-display text-[22px] leading-none lg:text-[34px]">&amp;</p>
+          <p className="mt-1.5 text-[13px] lg:text-[15px]">{dateParts.weekday}</p>
+          <p className="text-[13px] lg:text-[15px]">{dateSpaced}</p>
+        </div>
+        <div className="font-display justify-self-start text-center text-[22px] leading-tight text-heading lg:text-[34px]">
+          {bride.split(" ").map((word) => (
+            <p key={word}>{word}</p>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

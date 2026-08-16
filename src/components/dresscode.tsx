@@ -10,10 +10,10 @@ export function Dresscode() {
   return (
     <Section tone="light">
       <Reveal>
-        <SectionHeading vi="Dresscode gợi ý" en="Suggested dress code" />
+        <SectionHeading en="Dress code" vi="Màu sắc Trang Phục" />
 
         <div className="mt-7 flex justify-center gap-3 lg:mt-10 lg:gap-5">
-          {weddingConfig.dresscodeColors.map((color) => (
+          {weddingConfig.dresscodeColors.slice(0, 4).map((color) => (
             <motion.span
               key={color}
               className="h-7 w-7 rounded-full border border-line lg:h-10 lg:w-10"
