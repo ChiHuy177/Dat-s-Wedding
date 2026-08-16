@@ -17,7 +17,7 @@ export function Thanks() {
         {/* Author mark */}
         <span className="mx-auto mb-5 block h-px w-12 bg-cream/25 lg:w-16" />
         <p className="font-body flex items-center justify-center gap-1.5 text-[9.5px] tracking-[0.16em] text-cream/50 uppercase lg:text-[11px]">
-          From IIC 4.0 with love
+          From Camping Team with love
           <Heart className="h-2.5 w-2.5 text-accent-soft lg:h-3 lg:w-3" />
         </p>
       </Reveal>

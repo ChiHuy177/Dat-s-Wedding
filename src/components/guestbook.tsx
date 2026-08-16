@@ -164,4 +164,4 @@ function formatDate(iso: string) {
 }
 
 const inputClass =
-  "w-full rounded-md border border-cream/30 bg-cream/8 px-3 py-2.5 text-[13px] text-cream outline-none placeholder:text-cream/45 focus-visible:border-accent-soft";
+  "w-full rounded-md border border-line bg-paper px-3 py-2.5 text-[13px] text-ink outline-none placeholder:text-ink-soft focus-visible:border-accent";

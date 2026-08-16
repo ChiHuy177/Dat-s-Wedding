@@ -86,17 +86,34 @@ export function CeremonyPanel() {
         <Countdown />
       </div>
 
-      <Reveal className="mt-10 text-center lg:mt-14">
-        <p className="font-display text-[16px] text-heading lg:text-[19px]">Lễ thành hôn được cử hành tại</p>
-        <p className="font-display mt-2 text-[30px] text-heading lg:text-[40px]">{ceremony.venue}</p>
+      <div className="relative mt-10 lg:mt-14">
+        {/* eslint-disable-next-line @next/next/no-img-element -- decorative vertical flourish */}
+        <img
+          src="/decor/ceremony-info/gate.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 w-3 lg:w-4"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element -- decorative vertical flourish, mirrored */}
+        <img
+          src="/decor/ceremony-info/gate.png"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-3 -scale-x-100 lg:w-4"
+        />
 
-        <p className="font-display mt-6 text-[16px] text-heading lg:text-[19px]">Vào lúc / At</p>
-        <p className="font-display mt-1 text-[42px] leading-none text-heading lg:text-[56px]">{ceremony.time}</p>
+        <Reveal className="text-center">
+          <p className="font-display text-[16px] text-heading lg:text-[19px]">Lễ thành hôn được cử hành tại</p>
+          <p className="font-display mt-2 text-[30px] text-heading lg:text-[40px]">{ceremony.venue}</p>
 
-        <div className="mt-6">
-          <DateBlock />
-        </div>
-      </Reveal>
+          <p className="font-display mt-6 text-[16px] text-heading lg:text-[19px]">Vào lúc / At</p>
+          <p className="font-display mt-1 text-[42px] leading-none text-heading lg:text-[56px]">{ceremony.time}</p>
+
+          <div className="mt-6">
+            <DateBlock />
+          </div>
+        </Reveal>
+      </div>
     </Section>
   );
 }
