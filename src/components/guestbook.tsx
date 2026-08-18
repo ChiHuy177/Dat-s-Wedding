@@ -7,6 +7,9 @@ import { Section } from "@/components/section";
 import { SectionHeading } from "@/components/section-heading";
 import { MAX_WISH_MESSAGE, MAX_WISH_NAME, type Wish } from "@/lib/wishes";
 
+// Tạm thời tắt hiển thị lại danh sách lời chúc — form gửi vẫn hoạt động bình thường.
+const SHOW_WISHES_LIST = false;
+
 export function Guestbook() {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -14,6 +17,7 @@ export function Guestbook() {
 
   // Refresh after a successful post. Called from an event handler, never an effect.
   const loadWishes = useCallback(async () => {
+    if (!SHOW_WISHES_LIST) return;
     try {
       const res = await fetch("/api/wishes");
       if (!res.ok) return;
@@ -25,6 +29,7 @@ export function Guestbook() {
   }, []);
 
   useEffect(() => {
+    if (!SHOW_WISHES_LIST) return;
     let active = true;
 
     fetch("/api/wishes")
@@ -118,41 +123,43 @@ export function Guestbook() {
         </form>
       </Reveal>
 
-      <div className="mt-5 space-y-2.5 lg:mt-7">
-        <AnimatePresence initial={false}>
-          {wishes.map((wish, i) => (
-            <motion.div
-              key={`${wish.at}-${i}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="rounded-lg border border-line bg-surface px-4 py-3.5"
-            >
-              <div className="flex items-baseline justify-between gap-3">
-                <p className="font-body text-[12.5px] font-semibold text-ink">{wish.name}</p>
-                {wish.at && (
-                  <time
-                    dateTime={wish.at}
-                    className="font-body flex-none text-[9.5px] tracking-[0.06em] text-ink-soft uppercase"
-                  >
-                    {formatDate(wish.at)}
-                  </time>
-                )}
-              </div>
-              <p className="font-body mt-1.5 text-[12.5px] leading-relaxed whitespace-pre-line text-ink-soft">
-                {wish.message}
-              </p>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      {SHOW_WISHES_LIST && (
+        <div className="mt-5 space-y-2.5 lg:mt-7">
+          <AnimatePresence initial={false}>
+            {wishes.map((wish, i) => (
+              <motion.div
+                key={`${wish.at}-${i}`}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-lg border border-line bg-surface px-4 py-3.5"
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <p className="font-body text-[12.5px] font-semibold text-ink">{wish.name}</p>
+                  {wish.at && (
+                    <time
+                      dateTime={wish.at}
+                      className="font-body flex-none text-[9.5px] tracking-[0.06em] text-ink-soft uppercase"
+                    >
+                      {formatDate(wish.at)}
+                    </time>
+                  )}
+                </div>
+                <p className="font-body mt-1.5 text-[12.5px] leading-relaxed whitespace-pre-line text-ink-soft">
+                  {wish.message}
+                </p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
 
-        {loaded && wishes.length === 0 && (
-          <p className="font-body py-4 text-center text-[12px] text-ink-soft">
-            Chưa có lời chúc nào — hãy là người đầu tiên nhé!
-          </p>
-        )}
-      </div>
+          {loaded && wishes.length === 0 && (
+            <p className="font-body py-4 text-center text-[12px] text-ink-soft">
+              Chưa có lời chúc nào — hãy là người đầu tiên nhé!
+            </p>
+          )}
+        </div>
+      )}
     </Section>
   );
 }
@@ -160,7 +167,18 @@ export function Guestbook() {
 function formatDate(iso: string) {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "";
-  return date.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit", year: "numeric" });
+  return date
+    .toLocaleString("en-US", {
+      timeZone: "Asia/Ho_Chi_Minh",
+      month: "numeric",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    })
+    .replace(",", "");
 }
 
 const inputClass =
